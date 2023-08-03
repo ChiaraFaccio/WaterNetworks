@@ -1,12 +1,15 @@
+# WaterNetworks
 This is the second version of the code. It permits to construct networks from trajectories and to analyze them using graph theory concepts.
 
+
+## INSTALLATION: 
 List of Python packages/libraries that need to be installed on your computer:
 
-NumPy
-SciPy
-Matplotlib
-NetworkX
-MDAnalysis
+- NumPy
+- SciPy
+- Matplotlib
+- NetworkX
+- MDAnalysis
 
 To install the code, download the three Python scripts \texttt{md\_functions\_water\_network.py}, \texttt{md\_link\_to\_main} and \texttt{md\_main\_water.py} and save them in the same folder. To run the code, execute the md_main_water.py script from the terminal. All the obtained results will be saved in the folder where the scripts are located.
 

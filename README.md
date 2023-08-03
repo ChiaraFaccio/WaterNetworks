@@ -11,7 +11,7 @@ List of Python packages/libraries that need to be installed on your computer:
 - NetworkX
 - MDAnalysis
 
-To install the code, download the three Python scripts \texttt{md\_functions\_water\_network.py}, \texttt{md\_link\_to\_main} and \texttt{md\_main\_water.py} and save them in the same folder. To run the code, execute the md_main_water.py script from the terminal. All the obtained results will be saved in the folder where the scripts are located.
+To install the code, download the three Python scripts md_functions_water_network.py, md_link_to_main and md_main_water.py and save them in the same folder. To run the code, execute the md_main_water.py script from the terminal. All the obtained results will be saved in the folder where the scripts are located.
 
 The code is designed with a user-friendly interface.
 

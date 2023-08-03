@@ -15,7 +15,7 @@ To install the code, download the three Python scripts md_functions_water_networ
 
 The code is designed with a user-friendly interface.
 
-The code makes use of the NetworkX 2.6.3 module [1] in Python 3.7, the Python package NetworkSNS [2] which is distributed under the BSD 2-Clause License, and the open-source packages NumPy [4], SciPy [5], and Matplotlib [6].
+The code makes use of the NetworkX 2.6.3 module [1] in Python 3.7, the Python package NetworkSNS [2] which is distributed under the BSD 3-Clause License, and the open-source packages NumPy [4], SciPy [5], and Matplotlib [6].
 
 ## REFERENCES:  
 [1] Hagberg, A., Chult, D. S. & Swart, P. (2008) Exploring Network Structure, Dynamics, and Function using NetworkX. In Varoquaux, G., Vaught, T. & Millman, J., editors, Proceedings of the 7th Python in Science Conference, pages 11 – 15, Pasadena, CA USA, Networkx

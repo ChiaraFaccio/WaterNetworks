@@ -42,13 +42,13 @@ if __name__ == '__main__':
         while begin_loop:
         
             fmt = "What do you want to do?\n \
-            1) to compute centrality measures \n \
-            2) to compute other metrics \n \
+            1) Centrality measure computation \n \
+            2) Computation of other metrics \n \
             3) to plot a single box in 3D \n \
             4) to plot a single box in 2D \n \
-            5) to save adjacency matrix in matlab format \n \
-            6) to consider dynamic networks \n \
-            7) to consider a weighted graph \n \
+            5) to save adjacency matrix in MATLAB format \n \
+            6) Dynamic graph metrics \n \
+            7) Weighted graph metrics \n \
             8) exit \n "
             
             
@@ -110,7 +110,7 @@ if __name__ == '__main__':
                 8) sparsity pattern of a frame \n \
                 9) entropy of the graph with subgraph \n \
                 10) entropy of the graph with TC \n \
-                11) entropy of the graph with Laplacian (Von Neumann entropy) \n \
+                11) entropy of the graph with Laplacian graph (von Neumann entropy) \n \
                 12) mean value of min/max max_min_eigenvalues (eigenvalues already calculated) \n \
                 13) mean values of the density of the graph \n \
                 14) mean values of the density of the boxes ({number of molecules}/{volume box}) \n \
@@ -250,7 +250,7 @@ if __name__ == '__main__':
                 1) to compute degree e TC \n \
                 2) to compute Estrada index \n \
                 3) entropy of the graph with TC \n \
-                4) entropy of the graph with Laplacian (Von Neumann entropy) \n'
+                4) entropy of the graph with graph Laplacian (von Neumann entropy) \n'
                 
                 res_7 = int(input(fmt_7))
               
@@ -294,45 +294,35 @@ if __name__ == '__main__':
         while begin_loop:
         
             fmt = 'What do you want to do?\n \
-            1) to compute centrality measures \n \
+            1) Centrality measures computation \n \
             2) exit \n'
             
             res = int(input(fmt))
             
             if res == 1:
                 fmt2 = 'Which centrality measures do you want to compute? \n \
-                1) total communicability e^{beta A} \mathbf{1} and e^{beta A^T} \mathbf{1} \n \
-                2) degree A \mathbf{1} and A^T \mathbf{1}  \n \
-                3) eigenvector centrality left and right of A \n \
-                4) HITS \n \
-                5) gTC \n \
-                6) TC of the bipartization of A \n'
+                1) in- and out-degree  \n \
+                2) left and right eigenvector centrality of A \n \
+                3) HITS \n \
+                4) gTC \n '
                 
-                res2 = input(fmt2)
-                
-                if int(res2) == 1:
-                
-                    res_10_1(U, list_molecules, list_nodes, nodes_to_save, boundary, dist, n_frames, path) 
+                res2 = input(fmt2) 
                     
-                elif int(res2) == 2:
+                if int(res2) == 1:
                 
                     res_10_2(U, list_molecules, list_nodes, nodes_to_save, boundary, dist, n_frames, path) 
                     
-                elif int(res2) == 3:
+                elif int(res2) == 2:
                 
                     res_10_3(U, list_molecules, list_nodes, nodes_to_save, boundary, dist, n_frames, path) 
                     
-                elif int(res2) == 4:
+                elif int(res2) == 3:
                 
                     res_10_4(U, list_molecules, list_nodes, nodes_to_save, boundary, dist, n_frames, path) 
                     
-                elif int(res2) == 5:
+                elif int(res2) == 4:
                 
                     res_10_5(U, list_molecules, list_nodes, nodes_to_save, boundary, dist, n_frames, path) 
-                    
-                elif int(res2) == 6:
-                
-                    res_10_6(U, list_molecules, list_nodes, nodes_to_save, boundary, dist, n_frames, path)                     
                     
                 else:
                     print('Value not valid')

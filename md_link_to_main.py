@@ -720,37 +720,7 @@ def res_7_4(U, list_molecules, list_nodes, boundary, dist, n_frames, path, str_w
     print('Average number of entropy (Von Neumann entropy) = {} \n'.format(np.mean(entropy_vect)))
     
     return
-    
-    
-def res_10_1(U, list_molecules, list_nodes, nodes_to_save, boundary, dist, n_frames, path):
 
-    fmt = 'Do you want normalized TC? \n \
-    1) no \n \
-    2) yes, w.r.t. number of edges \n'
-    
-    normalization = int(input(fmt))
-    
-    fmt = 'Value of beta (beta > 0) = '
-    beta = float(input(fmt))
-    
-    while beta <= 0:
-        print('ERROR: beta is a positive parameter')
-        
-        fmt = 'Value of beta (beta > 0) = '
-        beta = float(input(fmt))
-    
-    
-    with open(os.path.join(path, 'directed_TC_beta_'+ str(beta)+ '_boundary_' + str(boundary)+'_normalization_'+str(normalization) + '_dist_'+ str(dist) +'.txt'), 'a+') as fobj:
-        fobj.write('Type of normalization = {},  molecules to consider = {}, for each molecule which atom to consider as a node = {}, nodes_to_save = {}\n'.format(normalization, list_molecules, list_nodes, nodes_to_save))
-        fobj.write('\n')
-    
-    for gggg in range(n_frames):
-    
-        compute_TC_directed(U, gggg, beta, list_molecules, list_nodes, nodes_to_save, path, boundary, normalization, dist)
-
-
-    return
-    
     
 def res_10_2(U, list_molecules, list_nodes, nodes_to_save, boundary, dist, n_frames, path) :
                 
@@ -804,33 +774,4 @@ def res_10_5(U, list_molecules, list_nodes, nodes_to_save, boundary, dist, n_fra
     
 
     return
-    
-    
-def res_10_6(U, list_molecules, list_nodes, nodes_to_save, boundary, dist, n_frames, path) :
-    fmt = 'Do you want normalized NTC? \n \
-    1) no \n \
-    2) yes, w.r.t. number of edges \n'
-    
-    normalization = int(input(fmt))
-    
-    fmt = 'Value of beta (beta > 0) = '
-    beta = float(input(fmt))
-    
-    while beta <= 0:
-        print('ERROR: beta is a positive parameter')
-        
-        fmt = 'Value of beta (beta > 0) = '
-        beta = float(input(fmt))
-    
-    
-    with open(os.path.join(path, 'directed_bTC_beta_'+ str(beta)+ '_boundary_' + str(boundary)+'_normalization_'+str(normalization) + '_dist_'+ str(dist) +'.txt'), 'a+') as fobj:
-        fobj.write('Type of normalization = {},  molecules to consider = {}, for each molecule which atom to consider as a node = {}, nodes_to_save = {}\n'.format(normalization, list_molecules, list_nodes, nodes_to_save))
-        fobj.write('\n')
-    
-    for gggg in range(n_frames):
-    
-        compute_bTC_directed(U, gggg, beta, list_molecules, list_nodes, nodes_to_save, path, boundary, normalization, dist)
-        
-    return
-    
     

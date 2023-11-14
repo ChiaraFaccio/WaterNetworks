@@ -19,7 +19,16 @@ if __name__ == '__main__':
     
     if answ == 'yes':
         traj = select_trajectory_file()
-        U = mda.Universe(topol, traj)
+        ans_traj2 = input('Are there other trajectories to load? (yes/no) ')
+        if  ans_traj2 == 'no':
+            U = mda.Universe(topol, traj)
+        else:
+            trajs = []
+            while ans_traj2 == 'yes':
+                traj2 = select_trajectory_file()
+                trajs.append(traj2)
+                ans_traj2 = input('Are there other trajectories to load? (yes/no) ')
+            U = mda.Universe(topol, trajs)
     else:
         U = mda.Universe(topol)
         

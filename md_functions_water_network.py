@@ -2691,21 +2691,69 @@ def compute_directed_HITS(U, hh, list_molecules, list_nodes, nodes_to_save, path
     dict_nodes = range_nodes_to_save(U, 0, list_molecules, list_nodes, nodes_to_save)
     range_nodes = list(dict_nodes.keys())
 
-    conn = nx.is_strongly_connected(G)
+        comp = nx.weakly_connected_components(G)
+    nodes = len(G.nodes())
     
-    if conn == True:   
+    hub = {}
+    auth = {}
     
-        hub, auth = nx.hits(G)
+    for c in comp:
+        G2 = G.subgraph(c)
+        nodelist = list(G2.nodes())
+        
+        if len(nodelist) == 1:
+            ii = nodelist[0]
+            hub[ii] = 1/nodes
+            auth[ii] = 1/nodes
+            
+        else:
+     
+            h, a = my_hits(G2, nodelist)
+            
+            for i in nodelist:
+                hub[i] = h[i]*(len(nodelist)/nodes)
+                auth[i] = a[i]*(len(nodelist)/nodes)
 
-        with open(os.path.join(path, 'directed_HITS'+ '_boundary_' + str(boundary) +'dist_'+str(dist)+'.txt'), 'a+') as fobj:
+    with open(os.path.join(path, 'directed_HITS'+ '_boundary_' + str(boundary) +'dist_'+str(dist)+'.txt'), 'a+') as fobj:
             for ii in range_nodes:
                     fobj.write('{}      {:=18.6e}      {:=18.6e}\n'.format(dict_nodes[ii], hub[ii], auth[ii]))
             fobj.write('\n')
-            
-    else:
-        print('The directed graph in frame {} is not strongly connected. HITS is not computed'.format(hh))
 
+    
     return
+    
+
+def my_hits(G, nodelist):
+
+    A = nx.adjacency_matrix(G)
+    n = len(nodelist)
+    hy = np.ones(n)
+    hy = hy/np.sqrt(sum(hy))
+    
+    ax = np.ones(n)
+    ax = ax/np.sqrt(sum(ax))
+    
+    tmp_a = np.inf
+    tmp_h = np.inf
+    
+    for _ in range(1000):
+        if tmp_a <= 1e-08 and tmp_h <= 1e-08:
+            break
+        ax_new = (A.T) @ hy
+        ax_new = ax_new/np.sqrt(sum(ax_new**(2)))
+        tmp_a = np.linalg.norm(ax - ax_new, inf)
+        ax = ax_new
+        
+        hy_new = A @ ax      
+        
+        hy_new = hy_new/np.sqrt(sum(hy_new**(2)))
+        tmp_h = np.linalg.norm(hy - hy_new, inf)
+        hy = hy_new
+    
+    h = dict(list(zip(nodelist, hy)))
+    a = dict(list(zip(nodelist, ax)))
+    
+    return h, a
   
     
 def compute_directed_degree(U, kk, list_molecules, list_nodes, nodes_to_save, path, boundary, dist):

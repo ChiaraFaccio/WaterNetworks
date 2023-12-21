@@ -2098,7 +2098,7 @@ def density(U, kk, list_molecules, list_nodes, n):
     Returns the density of the central box, defining as n_nodes/volume(nm)
     '''
 
-    for tr in U.trajectory[kk, kk+1]:
+    for tr in U.trajectory[kk:kk+1]:
         volume = (tr.volume)/1000
         dens = n/volume
         
